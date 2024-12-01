@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.17)
+project(AOC2024)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+function(addExe name)
+    set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${name})
+    file(GLOB_RECURSE src LIST_DIRECTORIES false CONFIGURE_DEPENDS ${SRC_DIR}/*.h ${SRC_DIR}/*.cpp)
+    add_executable(${name} ${src})
+endfunction()
+
+addExe(day1)
