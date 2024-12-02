@@ -23,7 +23,7 @@ long part_1(char const* fn)
         rr.insert(parse_num<int>(numbers[1]));
     }
     long distance = 0;
-    for(auto i(ll.cbegin()), j(rr.cbegin()); i != ll.cend() && j != rr.cend(); i++, j++)
+    for (auto i(ll.cbegin()), j(rr.cbegin()); i != ll.cend() && j != rr.cend(); i++, j++)
         distance += std::abs((*i) - (*j));
     return distance;
 }
@@ -40,7 +40,8 @@ long part_2(char const* fn)
         ll.push_back(parse_num<int>(numbers[0]));
         rr.insert(parse_num<int>(numbers[1]));
     }
-    return std::reduce(ll.cbegin(), ll.cend(), 0L, [&rr](long score, int i) { return score + i * static_cast<long>(rr.count(i)); });
+    return std::reduce(ll.cbegin(), ll.cend(), 0L,
+                       [&rr](long score, int i) { return score + i * static_cast<long>(rr.count(i)); });
 }
 
 int main(int argc, char* argv[])
