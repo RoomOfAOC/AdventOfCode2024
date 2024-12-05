@@ -1,4 +1,6 @@
 #include <vector>
+#include <map>
+#include <set>
 #include <iostream>
 
 template <typename T> std::ostream& operator<<(std::ostream& os, std::vector<T> const& v)
@@ -6,5 +8,21 @@ template <typename T> std::ostream& operator<<(std::ostream& os, std::vector<T> 
     os << "[ ";
     for (auto const& e : v)
         os << e << " ";
-    return os << "]\n";
+    return os << "]";
+}
+
+template <typename K, typename V> std::ostream& operator<<(std::ostream& os, std::map<K, V> const& m)
+{
+    os << "{\n";
+    for (auto const& [k, v] : m)
+        os << "(" << k << ", " << v << ")\n";
+    return os << "}";
+}
+
+template <typename T> std::ostream& operator<<(std::ostream& os, std::set<T> const& v)
+{
+    os << "{ ";
+    for (auto const& e : v)
+        os << e << " ";
+    return os << "}";
 }
