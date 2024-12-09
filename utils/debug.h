@@ -38,11 +38,23 @@ std::ostream& operator<<(std::ostream& os, std::unordered_map<K, V, H> const& m)
     return os << "}";
 }
 
-template <typename T, typename H = std::hash<K>>
+template <typename T, typename H = std::hash<T>>
 std::ostream& operator<<(std::ostream& os, std::unordered_set<T, H> const& v)
 {
     os << "{ ";
     for (auto const& e : v)
         os << e << " ";
     return os << "}";
+}
+
+template <typename T, typename U> std::ostream& operator<<(std::ostream& os, std::pair<T, U> const& p)
+{
+    return os << "< " << p.first << " " << p.second << " >";
+}
+
+template <typename... Ts> std::ostream& operator<<(std::ostream& os, std::tuple<Ts...> const& t)
+{
+    os << "< ";
+    std::apply([&os](auto&&... args) { ((os << args << " "), ...); }, t);
+    return os << ">";
 }
