@@ -3,6 +3,7 @@
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
+#include <list>
 #include <iostream>
 
 template <typename T> std::ostream& operator<<(std::ostream& os, std::vector<T> const& v)
@@ -57,4 +58,12 @@ template <typename... Ts> std::ostream& operator<<(std::ostream& os, std::tuple<
     os << "< ";
     std::apply([&os](auto&&... args) { ((os << args << " "), ...); }, t);
     return os << ">";
+}
+
+template <typename T> std::ostream& operator<<(std::ostream& os, std::list<T> const& v)
+{
+    os << "[ ";
+    for (auto const& e : v)
+        os << e << " ";
+    return os << "]";
 }
