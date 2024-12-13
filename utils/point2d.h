@@ -27,6 +27,12 @@ template <typename T> struct Point2D
         y += other.y;
         return *this;
     }
+    Point2D& operator+=(T const n)
+    {
+        x += n;
+        y += n;
+        return *this;
+    }
 
     struct Hasher
     {
@@ -51,4 +57,9 @@ template <typename T> Point2D<T> operator+(Point2D<T> const& p1, Point2D<T> cons
 template <typename T> Point2D<T> operator-(Point2D<T> const& p1, Point2D<T> const& p2)
 {
     return Point2D(p1.x - p2.x, p1.y - p2.y);
+}
+
+template <typename T> T operator^(Point2D<T> const& p1, Point2D<T> const& p2)
+{
+    return p1.x * p2.y - p1.y * p2.x;
 }
