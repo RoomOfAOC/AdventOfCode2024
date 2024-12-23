@@ -1,8 +1,15 @@
 cmake_minimum_required(VERSION 3.17)
+
+if(WIN32)
+    set(CMAKE_TOOLCHAIN_FILE "D:/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE INTERNAL "" FORCE)
+endif()
+
 project(AOC2024)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(Boost COMPONENTS graph REQUIRED)
 
 function(addExe name)
     set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${name})
@@ -32,3 +39,6 @@ addExe(day19)
 addExe(day20)
 addExe(day21)
 addExe(day22)
+addExe(day23)
+
+target_link_libraries(day23 Boost::graph)

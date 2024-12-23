@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <list>
+#include <queue>
 #include <iostream>
 
 template <typename T> std::ostream& operator<<(std::ostream& os, std::vector<T> const& v)
@@ -61,6 +62,14 @@ template <typename... Ts> std::ostream& operator<<(std::ostream& os, std::tuple<
 }
 
 template <typename T> std::ostream& operator<<(std::ostream& os, std::list<T> const& v)
+{
+    os << "[ ";
+    for (auto const& e : v)
+        os << e << " ";
+    return os << "]";
+}
+
+template <typename T> std::ostream& operator<<(std::ostream& os, std::deque<T> const& v)
 {
     os << "[ ";
     for (auto const& e : v)
