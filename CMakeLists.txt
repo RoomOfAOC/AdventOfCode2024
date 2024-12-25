@@ -41,5 +41,6 @@ addExe(day21)
 addExe(day22)
 addExe(day23)
 addExe(day24)
+addExe(day25)
 
 target_link_libraries(day23 Boost::graph)

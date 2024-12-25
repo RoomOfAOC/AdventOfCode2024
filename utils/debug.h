@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <list>
 #include <queue>
+#include <array>
 #include <iostream>
 
 template <typename T> std::ostream& operator<<(std::ostream& os, std::vector<T> const& v)
@@ -75,4 +76,12 @@ template <typename T> std::ostream& operator<<(std::ostream& os, std::deque<T> c
     for (auto const& e : v)
         os << e << " ";
     return os << "]";
+}
+
+template <typename T, size_t N> std::ostream& operator<<(std::ostream& os, std::array<T, N> const& v)
+{
+    os << "( ";
+    for (auto const& e : v)
+        os << e << " ";
+    return os << ")";
 }
